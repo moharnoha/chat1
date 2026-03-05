@@ -3,31 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة الخدمة</title>
+    <title>تواصل معنا</title>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f0f2f5; }
-        .card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #333; }
-        p { color: #666; }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chat-container {
+            text-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .chat-icon {
+            width: 80px;
+            height: 80px;
+            background: #0082ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .chat-icon:hover {
+            transform: scale(1.1);
+            background: #0069d9;
+        }
+
+        .chat-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        h2 { color: #333; margin: 10px 0; }
+        p { color: #777; margin-bottom: 25px; }
+
+        .btn-link {
+            text-decoration: none;
+            color: #0082ff;
+            font-weight: bold;
+            border: 2px solid #0082ff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-link:hover {
+            background: #0082ff;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>مرحباً بك في موقعنا</h1>
-        <p>إذا كان لديك أي استفسار، تواصل معنا عبر الدردشة في الأسفل.</p>
+    <div class="chat-container">
+        <a href="https://work.weixin.qq.com/kfid/kfc14e2181951dbde5f" class="chat-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </a>
+
+        <h2>تحدث مع الدعم</h2>
+        <p>اضغط على الأيقونة لبدء المحادثة الفورية</p>
+        
+        <a href="https://work.weixin.qq.com/kfid/kfc14e2181951dbde5f" class="btn-link">فتح الدردشة</a>
     </div>
 
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69a909979f47f71c33c65041/1jiu4qu11';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    </body>
+</body>
 </html>
