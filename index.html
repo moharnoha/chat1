@@ -1,85 +1,786 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="notranslate" translate="no"> 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تواصل معنا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <title>serviocmm - Optimized UI</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        :root { 
+            --primary-green: #2F5822;    
+            --vibrant-green: #74a367;    
+            --header-bg: rgba(243, 242, 242, 0.85);        
+            --page-bg: #F3F2F2;          
+            --text-main: #000000;        
+            --text-muted: #5f6368;       
+            --circle-empty: #FFFFFF;     
+            --profile-icon: #9aa0a6;     
+            --profile-bg: #e8eaed;       
+            --border-subtle: rgba(0,0,0,0.06);
+            --transition-main: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent-green: #386E2C; 
+            --card-white: #ffffff;
+            --bg-light: #f8fbff; --border-gray: #E4ECE3; --text-dark: #1a202c;
+            --primary-blue: #2563eb; --accent: #000000; --success-green: #22c55e;
+            --error-red: #ef4444; --bg-gray: #E4ECE3; --header-green: #FFFFFF;
+        }
+
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--page-bg); 
+            direction: rtl !important; 
+            -webkit-font-smoothing: antialiased;
+            color: var(--text-main);
+            font-family: 'Cairo', 'Inter', sans-serif;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: block;
+        }
+
+        header { 
+            width: 100%; height: 72px; 
+            background-color: var(--header-bg); 
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; 
+            padding: 0 20px;
+            box-sizing: border-box;
+            position: relative; 
+            z-index: 1000;
+            direction: rtl !important;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            justify-content: space-between;
+            position: relative;
         }
 
-        .chat-container {
-            text-align: center;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        @media (min-width: 481px) {
+            .header-content {
+                max-width: 100%;
+                padding: 0 40px;
+            }
         }
 
-        .chat-icon {
-            width: 80px;
-            height: 80px;
-            background: #0082ff;
+        .right-section { 
+            display: flex; 
+            align-items: center; 
+            flex-shrink: 0;
+            z-index: 2;
+            cursor: pointer;
+        }
+        
+        .center-section { 
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            width: max-content;
+        }
+
+        .account-text {
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #121212;
+            letter-spacing: -0.3px; 
+            white-space: nowrap;
+        }
+
+        .back-arrow-svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #121212;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .left-section {
+            width: 24px; 
+        }
+
+        .main-container { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%; 
+            box-sizing: border-box;
+        }
+
+        .order-details-header {
+            background-color: #FFFFFF;
+            padding: 20px 25px; 
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 1px solid #f0f0f0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .text-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .number-circle {
+            width: 32px; 
+            height: 32px;
+            border: 2px solid #000; 
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin: 0 auto 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            text-decoration: none;
+            justify-content: center;
+            font-size: 16px; 
+            font-weight: 800; 
+            color: #000;
+            flex-shrink: 0;
+            font-family: 'Lexend', sans-serif;
         }
 
-        .chat-icon:hover {
-            transform: scale(1.1);
-            background: #0069d9;
+        .section-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            margin: 0;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.2;
         }
 
-        .chat-icon svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
+        .header-subtitle {
+            font-size: 13px;
+            color: #86868b;
+            font-weight: 500;
+            line-height: 1.2;
         }
 
-        h2 { color: #333; margin: 10px 0; }
-        p { color: #777; margin-bottom: 25px; }
-
-        .btn-link {
-            text-decoration: none;
-            color: #0082ff;
-            font-weight: bold;
-            border: 2px solid #0082ff;
-            padding: 10px 25px;
-            border-radius: 30px;
-            transition: 0.3s;
+        .content-area { 
+            padding: 20px 25px; 
+            width: 100%; 
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .order-card { 
+            width: 100%; 
+            background: transparent; 
+            box-sizing: border-box; 
         }
 
-        .btn-link:hover {
-            background: #0082ff;
-            color: white;
+        .form-grid { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
+            padding: 0; 
+        }
+        
+        .field { 
+            position: relative; 
+            padding: 0;
+        }
+
+        .field .label { 
+            font-size: 14px; 
+            font-weight: 600; 
+            color: #1d1d1f; 
+            margin-bottom: 8px; 
+            display: block; 
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .input-box { 
+            display: flex; 
+            align-items: center; 
+            background: #ffffff; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            padding: 10px 16px; 
+            min-height: 48px; 
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .input-box:focus-within {
+            border-color: #000; 
+            box-shadow: 0 0 0 1px #000;
+        }
+
+        .input-box.error-state {
+            border-color: #ff3b30;
+            background-color: #fff9f9;
+        }
+        
+        .input-box input, .input-box span { 
+            flex: 1; 
+            border: none; 
+            outline: none; 
+            background: none; 
+            font-size: 15px; 
+            font-weight: 400; 
+            color: #000; 
+            width: 100%; 
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .field-error-msg {
+            font-size: 12px;
+            color: #ff3b30;
+            font-weight: 500;
+            margin-top: 6px;
+            display: none;
+            text-align: right;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .limit-hint { 
+            font-size: 11px; 
+            color: #86868b; 
+            margin-top: 6px; 
+            font-weight: 400; 
+            display: none; 
+            gap: 12px; 
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .bottom-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .price-container { 
+            background: #f9f9f9; 
+            padding: 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-radius: 8px;
+            border: 1px solid #eeeeee;
+            width: 100%;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+        
+        .price-label { 
+            font-size: 14px; 
+            font-weight: 500; 
+            color: #555;
+        }
+        .price-value { 
+            font-size: 20px; 
+            font-weight: 700; 
+            color: #000; 
+            font-family: 'Lexend', sans-serif; 
+        }
+
+        #payBtn { 
+            width: 100%; 
+            padding: 16px; 
+            border-radius: 8px; 
+            border: none; 
+            background-color: #000000; 
+            color: #ffffff; 
+            font-size: 16px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative;
+            box-sizing: border-box;
+            margin-bottom: 40px;
+            flex-shrink: 0;
+            transition: opacity 0.2s;
+        }
+
+        #payBtn:active {
+            opacity: 0.8;
+        }
+        
+        .exact-8-spinner {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%) scale(0.5);
+            display: none;
+            width: 44px;
+            height: 44px;
+        }
+        .exact-8-spinner div {
+            position: absolute;
+            width: 6px;
+            height: 14px;
+            background: #ffffff;
+            border-radius: 10px;
+            left: 19px;
+            top: 0;
+            transform-origin: 3px 22px;
+            animation: spinner-fade 0.8s linear infinite;
+        }
+        @keyframes spinner-fade { 0% { opacity: 1; } 100% { opacity: 0.3; } }
+        .loading .exact-8-spinner { display: block; }
+
+        #status-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .status-icon-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            animation: scaleUp 0.5s ease-out;
+        }
+        .status-icon-box.success { background-color: #f0f9f1; }
+        .status-icon-box.error { background-color: #fff5f5; }
+        
+        .status-icon-box i { font-size: 50px; }
+        .status-icon-box.success i { color: #000000; }
+        .status-icon-box.error i { color: #000000; }
+
+        .status-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 8px;
+            padding: 0 20px;
+        }
+        .status-sub {
+            font-size: 15px;
+            color: #666;
+            font-weight: 400;
+        }
+        @keyframes scaleUp {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #nav-loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 99999;
         }
     </style>
 </head>
-<body>
+<body class="notranslate" translate="no">
 
-    <div class="chat-container">
-        <a href="https://work.weixin.qq.com/kfid/kfc14e2181951dbde5f" class="chat-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        </a>
-
-        <h2>تحدث مع الدعم</h2>
-        <p>اضغط على الأيقونة لبدء المحادثة الفورية</p>
-        
-        <a href="https://work.weixin.qq.com/kfid/kfc14e2181951dbde5f" class="btn-link">فتح الدردشة</a>
+    <div id="status-overlay">
+        <div class="status-icon-box" id="status-icon-bg">
+            <i class="fas" id="status-icon"></i>
+        </div>
+        <div class="status-title" id="status-title"></div>
+        <div class="status-sub" id="status-sub"></div>
     </div>
 
+    <div id="nav-loader"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="right-section" onclick="history.back()">
+                <svg class="back-arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </div>
+            <div class="center-section">
+                <span class="account-text">social media marketing</span>
+            </div>
+            <div class="left-section"></div>
+        </div>
+    </header>
+
+    <div class="main-container" id="page-content">
+        <div class="services-grid">
+            
+            <div class="order-details-header">
+                <div class="number-circle">1</div>
+                <div class="text-group">
+                    <div class="section-header" data-ar="تفاصيل الطلب" data-en="Order Details">تفاصيل الطلب</div>
+                    <div class="header-subtitle" data-ar="يرجى ملء الحقول التالية" data-en="Please fill in the following fields">يرجى ملء الحقول التالية</div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div class="order-card">
+                    <div class="form-grid">
+                        <div class="field" id="link-field">
+                            <label class="label" data-i18n="link_label">الرابط</label>
+                            <div class="input-box" id="link-box">
+                                <input id="platformLink" type="url" required data-i18n-placeholder="link_placeholder" placeholder="أدخل الرابط هنا">
+                            </div>
+                            <div class="field-error-msg" id="link-error"></div>
+                        </div>
+
+                        <div class="field" id="category-field" onclick="goToCategory()" style="cursor:pointer">
+                            <label class="label" data-i18n="category_label">الفئة المختارة</label>
+                            <div class="input-box" id="category-box" style="justify-content: space-between;">
+                                <span id="category" data-i18n="choose_service">اضغط لاختيار خدمة...</span>
+                                <i class="fas fa-chevron-left" style="font-size: 14px; color: #c1c1c6;"></i>
+                            </div>
+                            <div class="field-error-msg" id="category-error"></div>
+                        </div>
+
+                        <div class="field" id="qty-field">
+                            <label class="label" data-i18n="quantity_label">الكمية المطلوبة</label>
+                            <div class="input-box" id="qty-box">
+                                <input id="quantity" type="text" inputmode="numeric" required data-i18n-placeholder="quantity_placeholder" placeholder="0" maxlength="13">
+                            </div>
+                            <div class="limit-hint" id="limit-hint">
+                                <span id="min-hint"></span>
+                                <span id="max-hint"></span>
+                            </div>
+                            <div class="field-error-msg" id="qty-error"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-actions">
+                    <div class="price-container">
+                        <span class="price-label" data-i18n="total_due">إجمالي المستحق</span>
+                        <span class="price-value" id="display-price">USD 0.00</span>
+                    </div>
+
+                    <button id="payBtn">
+                        <span id="btn-text" data-i18n="confirm_order">تأكيد الطلب والدفع</span>
+                        <div class="exact-8-spinner">
+                            <div></div><div></div><div></div><div></div>
+                            <div></div><div></div><div></div><div></div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ar: {
+                order_details: "تفاصيل الطلب",
+                link_label: "الرابط",
+                link_placeholder: "أدخل الرابط هنا",
+                category_label: "الفئة المختارة",
+                choose_service: "اضغط لاختيار خدمة...",
+                quantity_label: "الكمية المطلوبة",
+                quantity_placeholder: "أدخل الكمية",
+                min: "الأدنى:",
+                max: "الأقصى:",
+                total_due: "إجمالي المستحق",
+                confirm_order: "تأكيد الطلب والدفع",
+                success_msg: "تم تفعيل الطلب",
+                success_sub: "نشط الان …",
+                balance_err: "عذراً، رصيدك الحالي غير كافٍ لإتمام هذه العملية",
+                balance_sub: "قم بتعبئة الحساب",
+                error_msg: "نعتذر، حدث خطأ غير متوقع. يرجى المحاولة لاحقاً",
+                error_sub: "يرجى المحاولة لاحقاً",
+                err_link_req: "يرجى إدخال الرابط أولاً",
+                err_cat_req: "يرجى اختيار الخدمة المطلوبة",
+                err_qty_req: "يرجى إدخال كمية صحيحة"
+            },
+            en: {
+                order_details: "Order Details",
+                link_label: "Link",
+                link_placeholder: "Enter link here",
+                category_label: "Selected Category",
+                choose_service: "Click to choose a service...",
+                quantity_label: "Requested Quantity",
+                quantity_placeholder: "Enter quantity",
+                min: "Min:",
+                max: "Max:",
+                total_due: "Total Due",
+                confirm_order: "Confirm & Pay",
+                success_msg: "Order Activated",
+                success_sub: "Active now ...",
+                balance_err: "Sorry, your current balance is insufficient",
+                balance_sub: "Please top up your account",
+                error_msg: "Sorry, an unexpected error occurred",
+                error_sub: "Please try again later",
+                err_link_req: "Please enter the link",
+                err_cat_req: "Please select a service",
+                err_qty_req: "Please enter a valid quantity"
+            }
+        };
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycbxJ0oupWVWSzpDrnEELES_4xlX-wWB05dgr7SFuww9JmjfFJkRj-nCrqWCUnmkSgABI/exec";
+
+        function applyTranslations() {
+            const lang = localStorage.getItem('pref_lang') || 'ar';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) el.placeholder = translations[lang][key];
+            });
+            document.querySelectorAll('.section-header').forEach(header => {
+                header.innerText = header.getAttribute(`data-${lang}`);
+            });
+            document.querySelectorAll('.header-subtitle').forEach(sub => {
+                sub.innerText = sub.getAttribute(`data-${lang}`);
+            });
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.field-error-msg').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.input-box').forEach(el => {
+                el.classList.remove('error-state');
+            });
+        }
+
+        function setFieldError(fieldId, errorMsg) {
+            const errorEl = document.getElementById(`${fieldId}-error`);
+            const boxEl = document.getElementById(`${fieldId}-box`);
+            if (errorEl) { 
+                errorEl.innerText = errorMsg; 
+                errorEl.style.display = 'block'; 
+            }
+            if (boxEl) { 
+                boxEl.classList.add('error-state');
+            }
+        }
+
+        function formatNumber(num) { 
+            if (!num || isNaN(num)) return "0";
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+        }
+
+        function updatePriceAndFormat() {
+            const qtyInput = document.getElementById("quantity");
+            const unitPrice = parseFloat(localStorage.getItem("service_price")) || 0;
+            let rawValue = qtyInput.value.replace(/[^0-9]/g, '');
+            if (rawValue.length > 10) rawValue = rawValue.substring(0, 10);
+            const total = unitPrice * (parseInt(rawValue) || 0);
+            let displayVal = total % 1 === 0 ? total.toString() : total.toFixed(8).replace(/\.?0+$/, "");
+            document.getElementById("display-price").innerText = `USD ${displayVal}`;
+            if (rawValue !== "") qtyInput.value = formatNumber(rawValue); 
+            else qtyInput.value = "";
+            
+            const err = document.getElementById('qty-error');
+            const box = document.getElementById('qty-box');
+            if(err) err.style.display = 'none';
+            if(box) box.classList.remove('error-state');
+        }
+
+        function updateUI() {
+            applyTranslations();
+            const lang = localStorage.getItem('pref_lang') || 'ar';
+            const chosenService = localStorage.getItem('chosen_service');
+            const minVal = localStorage.getItem("service_min");
+            const maxVal = localStorage.getItem("service_max");
+            
+            document.getElementById("category").innerText = chosenService || translations[lang].choose_service;
+            
+            const limitHint = document.getElementById('limit-hint');
+            if (chosenService && minVal && maxVal) {
+                document.getElementById('min-hint').innerHTML = `<b>${translations[lang].min}</b> ${formatNumber(minVal)}`;
+                document.getElementById('max-hint').innerHTML = `<b>${translations[lang].max}</b> ${formatNumber(maxVal)}`;
+                limitHint.style.display = 'flex';
+            } else {
+                document.getElementById('min-hint').innerHTML = "";
+                document.getElementById('max-hint').innerHTML = "";
+                limitHint.style.display = 'none';
+            }
+            
+            updatePriceAndFormat();
+        }
+
+        function goToCategory() { location.href = `../Category/`; }
+        window.addEventListener('load', updateUI);
+        window.addEventListener('pageshow', updateUI);
+        window.addEventListener('storage', updateUI);
+        
+        document.getElementById("quantity").oninput = updatePriceAndFormat;
+        document.getElementById("platformLink").oninput = function() {
+            this.value = this.value.replace(/[^\x00-\x7F]/g, "");
+            const err = document.getElementById('link-error');
+            const box = document.getElementById('link-box');
+            if(err) err.style.display = 'none';
+            if(box) box.classList.remove('error-state');
+        };
+
+        function showFinalStatus(message, subMessage, isSuccess) {
+            const overlay = document.getElementById('status-overlay');
+            const titleEl = document.getElementById('status-title');
+            const subEl = document.getElementById('status-sub');
+            const iconBg = document.getElementById('status-icon-bg');
+            const icon = document.getElementById('status-icon');
+            
+            titleEl.innerText = message;
+            subEl.innerText = subMessage;
+            
+            if (isSuccess) {
+                iconBg.className = 'status-icon-box success';
+                icon.className = 'fas fa-check';
+            } else {
+                iconBg.className = 'status-icon-box error';
+                icon.className = 'fas fa-times';
+            }
+            
+            overlay.style.display = 'flex';
+            
+            setTimeout(() => {
+                window.location.href = "../../dashboard/";
+            }, 2500);
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, increment, collection, serverTimestamp, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = { 
+            apiKey: "AIzaSyBYNRiMneaU-d6FPMbCnjcWQBX4Tdg50zk", 
+            authDomain: "serviocmm-a65ed.firebaseapp.com", 
+            projectId: "serviocmm-a65ed", 
+            storageBucket: "serviocmm-a65ed.firebasestorage.app", 
+            messagingSenderId: "975373759034", 
+            appId: "1:975373759034:web:645cb5fb48772839453b03" 
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        let currentUser = null;
+
+        onAuthStateChanged(auth, async (user) => { 
+            if (user) {
+                currentUser = user;
+                localStorage.setItem("user_email", user.email);
+            } 
+        });
+
+        document.getElementById("payBtn").onclick = async function() {
+            clearErrors();
+            const lang = localStorage.getItem('pref_lang') || 'ar';
+            const t = translations[lang];
+            if (!currentUser) return;
+            
+            const link = document.getElementById("platformLink").value.trim();
+            const email = currentUser.email; 
+            const qtyRaw = document.getElementById("quantity").value.replace(/,/g, '');
+            const qtyNum = parseInt(qtyRaw) || 0;
+            const unitPrice = parseFloat(localStorage.getItem("service_price")) || 0;
+            const finalCharge = parseFloat((unitPrice * qtyNum).toFixed(8));
+            const service = localStorage.getItem("chosen_service");
+            const minAllowed = parseInt(localStorage.getItem("service_min")) || 0;
+            const maxAllowed = parseInt(localStorage.getItem("service_max")) || Infinity;
+
+            let hasError = false;
+            if (!link) { setFieldError('link', t.err_link_req); hasError = true; }
+            if (!service) { setFieldError('category', t.err_cat_req); hasError = true; }
+            if (qtyNum <= 0 || qtyNum < minAllowed || qtyNum > maxAllowed || qtyRaw.length > 10) { 
+                setFieldError('qty', t.err_qty_req); 
+                hasError = true; 
+            }
+            
+            if (hasError) return;
+
+            this.classList.add('loading');
+            this.disabled = true;
+
+            try {
+                const userRef = doc(db, "users", currentUser.uid);
+                await runTransaction(db, async (transaction) => {
+                    const userSnap = await transaction.get(userRef);
+                    if (!userSnap.exists()) throw "User does not exist";
+                    const currentBalance = parseFloat(userSnap.data().balance || 0);
+                    if (currentBalance < (finalCharge - 0.000000001)) throw "INSUFFICIENT_BALANCE";
+                    
+                    transaction.update(userRef, { 
+                        balance: increment(-finalCharge), 
+                        total_spend: increment(finalCharge) 
+                    });
+                    
+                    const transRef = doc(collection(db, "transactions"));
+                    transaction.set(transRef, { 
+                        amount: `-${finalCharge.toFixed(8).replace(/\.?0+$/, "")}`, 
+                        description: "" + service, 
+                        status: "Active", 
+                        link: link, 
+                        quantity: qtyNum, 
+                        timestamp: serverTimestamp(), 
+                        userId: currentUser.uid, 
+                        userEmail: email 
+                    });
+                });
+                
+                try { 
+                    fetch(scriptURL, { 
+                        method: "POST", 
+                        mode: "no-cors", 
+                        body: JSON.stringify({ 
+                            platformLink: link, 
+                            category: service, 
+                            quantity: qtyNum, 
+                            charge: finalCharge.toFixed(8).replace(/\.?0+$/, ""), 
+                            gmail: email, 
+                            status: "Active" 
+                        }) 
+                    }); 
+                } catch (e) {}
+                
+                showFinalStatus(t.success_msg, t.success_sub, true);
+            } catch (e) {
+                this.classList.remove('loading');
+                this.disabled = false;
+                if (e === "INSUFFICIENT_BALANCE") showFinalStatus(t.balance_err, t.balance_sub, false);
+                else showFinalStatus(t.error_msg, t.error_sub, false);
+            }
+        };
+    </script>
 </body>
 </html>
